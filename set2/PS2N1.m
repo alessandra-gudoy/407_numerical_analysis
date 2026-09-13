@@ -37,7 +37,7 @@ labels = {'I_64 - I_32', 'I_128 - I_64', 'I_256 - I_128', 'I_512 - I_256', 'I_10
 ratio = diffs(2:length(diffs)) ./ diffs(1:length(diffs) - 1);
 
 
-ratios = table(labels', diffs(1:length(diffs)-1)', ratio', 'VariableNames', columns)
+% ratios = table(labels', diffs(1:length(diffs)-1)', ratio', 'VariableNames', columns)
 
 
 % delta x line
@@ -51,7 +51,6 @@ colorg=[0.4660, 0.6740, 0.1880];
 figure;
 P1 = loglog(Nvals(2:length(diffs)+1)', diffs, 'o-');    % need to match sizes
 hold on;
-colorg=[0.4660, 0.6740, 0.1880];
 loglog(Nvals(4:5)', shifted_y(4:5), '-', 'Color', colorg, 'MarkerFaceColor', colorg);       % delta x
 text(text_x, text_y, "S_n - S_{n-1}", 'FontSize', 16, 'Color', colorg);                          % label
 hold off;

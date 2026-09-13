@@ -1,5 +1,7 @@
 # MATLAB .gitignore template: https://github.com/github/gitignore/blob/main/Global/MATLAB.gitignore
 
+*.DS_Store
+
 # Autosave files
 *.asv
 *.m~

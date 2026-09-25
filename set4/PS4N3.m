@@ -1,6 +1,8 @@
 clc;
 clear;
 
+fprintf("\n\nProblem Set 4 #3d, e\n\n");
+
 % dimensions of A (mxn) and B (nxp)
 m = 1000;
 n = 40;
@@ -10,12 +12,14 @@ A = randi(30, m, n);                  % A an mxn matrix of integers less than or
 B = randi(30, n, p);                  % B an mxn matrix of integers less than or equal to 1000
 
 % calculate product using function and MATLAB  function
-fprintf("#3 function matrixMultiplication: \n");
+
+fprintf("part e\n");
+fprintf("function matrixMultiplication: ");
 tic
 myProduct = matrixMultiplication(A, B);
 toc
 
-fprintf("\nMATLAB matrix multiplication: \n");
+fprintf("MATLAB matrix multiplication: ");
 tic
 matlabProduct = A * B;
 toc
@@ -29,5 +33,6 @@ relative_err = absolute_err ./ abs(matlabProduct);
 maxnorm_abs = norm(absolute_err, inf);
 maxnorm_rel = norm(relative_err, inf);
 
+fprintf("\n\npart d");
 fprintf("\nThe max norm of the Absolute Error matrix is %d.\n", maxnorm_abs);
 fprintf("The max norm of the Relative Error matrix is %d.\n", maxnorm_rel);

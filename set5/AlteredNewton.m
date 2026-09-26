@@ -1,8 +1,7 @@
 function [xn, n, err] = AlteredNewton(x0, f, df, tol, stopcriteria, maxN)
 
-% NewtonMethod(x0, f, df, tol, stopcriteria): use Newton's Method to 
-%                                             approximate the root 
-%                                             of function f
+% AlteredNewton(x0, f, df, tol, stopcriteria, maxN): use Newton's Method to 
+%                 approximate the root of function f within maxN iterations
 
 % INPUTS:
 %   x0  (real number)       : initial guess x*
@@ -53,7 +52,7 @@ while n < maxN && err > tol    % continue iterations while above tolerance
     if stopcriteria == 1
         err = abs(newXn - xn);              % err = |xn - x(n-1)|
     elseif stopcriteria == 2
-        err = abs(newXn - xn) / abs(xn);    % err = |xn - x(n-1)| / |xn|
+        err = abs(newXn - xn) / abs(newXn);    % err = |xn - x(n-1)| / |xn|
     elseif stopcriteria == 3
         err = abs(f(newXn));                % err = |f(xn)|
     end

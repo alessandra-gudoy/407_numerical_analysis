@@ -46,7 +46,7 @@ while err > tol     % continue iterations while above tolerance
     if stopcriteria == 1
         err = abs(newXn - xn);              % err = |xn - x(n-1)|
     elseif stopcriteria == 2
-        err = abs(newXn - xn) / abs(xn);    % err = |xn - x(n-1)| / |xn|
+        err = abs(newXn - xn) / abs(newXn);    % err = |xn - x(n-1)| / |xn|
     elseif stopcriteria == 3
         err = abs(f(newXn));                % err = |f(xn)|
     end

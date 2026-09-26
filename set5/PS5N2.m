@@ -33,10 +33,8 @@ stopcriteria = [1 2 3];
 
 columns = {'Stopping Criteria', 'Approximation of Root, xn', 'Number of Iterations, n'};
 
-fprintf("\n\nProblem Set 5 #2b\n\n");
+fprintf("\n\nProblem Set 5 #2b\n");
 fRootsTable = table(stopcriteria', dispF, fIterations', 'VariableNames', columns)
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end 2b ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start 2c ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %
@@ -64,7 +62,5 @@ dispG = num2str(gRoots', '%.8f');       % display with 8 decimal places
 
 gIterations = [m1 m2 m3];
 
-fprintf("\n\nProblem Set 5 #2c\n\n");
+fprintf("\n\nProblem Set 5 #2c\n");
 gRootsTable = table(stopcriteria', dispG, gIterations', 'VariableNames', columns)
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ end 2c ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %

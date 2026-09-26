@@ -41,6 +41,6 @@ end
 
 columns = {'Stopping Criteria', 'Approximation of Root, xn', 'Number of Iterations, n', 'Error Approximation', 'Absolute Error', 'Relative Error'};
 
-fprintf("\n\nProblem Set 5 #2b\n\n");
-fprintf("According to MATLAB, f(x) = 0 when x = %d.\n\n", x);
+fprintf("\n\nProblem Set 5 #2b\n");
+fprintf("According to MATLAB, f(x) = 0 when x = %d.\n", x);
 fRootsTable = table(stopcriteria', disp, iterations', errors', absolute_err', relative_err', 'VariableNames', columns)

@@ -1,4 +1,4 @@
-function [xn, n] = NewtonMethod(x0, f, df, tol, stopcriteria)
+function [xn, n, err] = AlteredNewton(x0, f, df, tol, stopcriteria, maxN)
 
 % NewtonMethod(x0, f, df, tol, stopcriteria): use Newton's Method to 
 %                                             approximate the root 
@@ -13,14 +13,21 @@ function [xn, n] = NewtonMethod(x0, f, df, tol, stopcriteria)
 %                               1 = |xn - x(n-1)| < tol
 %                               2 = |xn - x(n-1)| / |xn| < tol
 %                               3 = |f(xn)| < tol
+%   maxN (positive integer) : maximum number of iterations
 
 % OUTPUT:
-%   xn : approximate root of f
-%   n : number of iterations
+%   xn  : approximate root of f
+%   n   : number of iterations
+%   err : error approximation used for stopping criteria
 
 % check if stopping criteria is valid
 if stopcriteria < 1 || stopcriteria > 3
     error("invalid stopping criteria");
+end
+
+% check if maximum number iterations is positive integer
+if maxN < 1
+    error("must iterate at least once: maximum number of iterations > 0");
 end
 
 % check if f'(x0) = 0
@@ -32,8 +39,8 @@ n = 0;              % initialize number of iterations counter
 err = Inf;          % initialize check for stopping criteria
 
 
-while err > tol     % continue iterations while above tolerance
-                    % only stop when happy
+while n < maxN && err > tol    % continue iterations while above tolerance
+                                % only stop when happy or too tired
 
     n = n + 1;      % increment iteration
 

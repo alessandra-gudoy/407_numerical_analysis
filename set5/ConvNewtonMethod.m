@@ -1,0 +1,81 @@
+function [Xn, n] = ConvNewtonMethod(x0, f, df, tol, stopcriteria)
+
+% NewtonMethod(x0, f, df, tol, stopcriteria): use Newton's Method to 
+%                                             approximate the root 
+%                                             of function f
+
+% INPUTS:
+%   x0  (real number)       : initial guess x*
+%   f   (function)          : function to approximate root of
+%   df  (function)          : derivative of function
+%   tol (real number)       : tolerance at which to stop at
+%   stopcriteria (integer)  : which criteria to check
+%                               1 = |xn - x(n-1)| < tol
+%                               2 = |xn - x(n-1)| / |xn| < tol
+%                               3 = |f(xn)| < tol
+
+% OUTPUT:
+%   Xn : vector of approximations of root of f [xk, ..., x1, x0]
+%   n : number of iterations
+
+% check if stopping criteria is valid
+if stopcriteria < 1 || stopcriteria > 3
+    error("invalid stopping criteria");
+end
+
+% check if f'(x0) = 0
+errZero(df(x0));    % function errZero() declared at end of file
+
+Xn = [x0];          % initialize root approximation xn using initial guess
+n = 0;              % initialize number of iterations counter
+
+err = Inf;          % initialize check for stopping criteria
+
+
+while err > tol     % continue iterations while above tolerance
+    % only stop when happy
+
+    n = n + 1;      % increment iteration
+    xn = Xn(1);
+
+    dfX = df(xn);   % f'(xn)
+    errZero(dfX);   % check f'(xn) = 0 and throw error  if true
+
+    newXn = xn - ( f(xn) / dfX );    % calculate x(n+1)
+
+    % calculate err based on stopcriteria option
+    if stopcriteria == 1
+        err = abs(newXn - xn);              % err = |xn - x(n-1)|
+    elseif stopcriteria == 2
+        err = abs(newXn - xn) / abs(newXn);    % err = |xn - x(n-1)| / |xn|
+    elseif stopcriteria == 3
+        err = abs(f(newXn));                % err = |f(xn)|
+    end
+
+    Xn = [newXn, Xn];
+end
+
+
+end
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ errZero() ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %
+function [value] = errZero(value)
+
+% errZero(): helper function used to check if f'(xn) is 0
+%            if f'(xn) = 0, throw error
+%            else, do nothing
+
+% Inputs:
+%   value (real number) : value to check if 0
+
+% Outputs:
+%   value (real number) : returns back original value
+
+if value == 0
+    error("f'(xn) = 0");
+end
+
+end

@@ -23,4 +23,11 @@ myInv = InverseMatrix(A);
 Ainv = inv(A);
 
 inv_diff = abs(Ainv - myInv);
-maxErr_inv = max(max(inv_diff))
+maxErr_inv_matlab = max(max(inv_diff));
+
+% also check if AAinv = I
+
+I = eye(n, n);
+
+check = abs(A*Ainv - I);
+maxErr_inv = max(max(check))

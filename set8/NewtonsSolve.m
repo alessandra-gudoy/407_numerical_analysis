@@ -18,8 +18,8 @@ function [x, n] = NewtonsSolve(F, J, x0, tol, stopcriteria)
 % Note: delX = xn - x(n-1)
 
 % OUTPUT:
-%   x   (n x 1 vector) : solution vector
-%   n    (real number) : number of iterations
+%   x (n x 1 vector)        : solution vector
+%   n (integer)             : number of iterations
 
 
 % initialize starting values

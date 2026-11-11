@@ -30,4 +30,4 @@ maxErr_inv_matlab = max(max(inv_diff));
 I = eye(n, n);
 
 check = abs(A*Ainv - I);
-maxErr_inv = max(max(check))
+maxErr_inv = max(max(check));

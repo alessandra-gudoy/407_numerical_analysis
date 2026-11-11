@@ -1,4 +1,4 @@
-function [P, L, U] = Pivot_LU_Factorization(A)
+function [P, L, U, s] = Pivot_LU_Factorization(A)
 
 % Pivot_LU_Factorization(A): find L, U such that LU = A with partial
 %                            pivoting
@@ -10,6 +10,7 @@ function [P, L, U] = Pivot_LU_Factorization(A)
 %   P (n x n matrix): permutation matrix
 %   L (n x n matrix): lower triangular matrix
 %   U (n x n matrix): upper triangular matrix
+%   s (real number) : number of row swaps
 
 
 % check if A is square matrix
@@ -22,6 +23,7 @@ end
 P = eye(n, n);      % eye(n, n): creates identity matrix I_n
 L = eye(n, n);
 U = A;
+s = 0;
 
 
 % go over columns by columns
@@ -32,6 +34,11 @@ for j=1:n-1
 
     % get real index row in matrix U
     index = index + j - 1;
+
+    % check if need to swap rows
+    if index ~= j
+        s = s + 1;
+    end
 
     % swap rows in U
     tmp = U(index, :);          % copy of row with pivot

@@ -14,7 +14,7 @@ function x = Pivot_GaussianElimination(A, b)
 % P = permutation matrix
 % L = lower triangular matrix
 % U = upper triangular matrix
-[P, L, U] = Pivot_LU_Factorization(A);
+[P, L, U, s] = Pivot_LU_Factorization(A);
 
 
 % solve for y in Ly = Pb

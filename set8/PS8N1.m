@@ -12,4 +12,15 @@ my_X = MatrixSolve(A, B);
 X = A \ B;
 
 relativeDiff = abs(X - my_X);
-maxErr = max(max(relativeDiff))
+maxErr = max(max(relativeDiff));
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ start 8b ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %
+
+% use A from above
+
+myInv = InverseMatrix(A);
+Ainv = inv(A);
+
+inv_diff = abs(Ainv - myInv);
+maxErr_inv = max(max(inv_diff))
